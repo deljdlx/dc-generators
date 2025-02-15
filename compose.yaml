@@ -1,0 +1,24 @@
+services:
+  generators:
+    image: tangramor/nginx-php8-fpm:php8.4.3_withoutNodejs
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - "./src:/var/www/html"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=web"
+      - "traefik.http.routers.generators.rule=Host(\"${DOMAIN}\")"
+      - "traefik.http.routers.generators.entrypoints=websecure"
+      - "traefik.http.routers.generators.tls.certresolver=myresolver"
+    networks:
+      web:
+      global:
+networks:
+  web:
+    name: web
+    external: true
+  global:
+    name: global
+    external: true

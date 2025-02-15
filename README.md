@@ -1,4 +1,4 @@
-# dc-phpinfo
+# Generators
 
-Minimalistic php stack managed by Docker Compose.
-# dc-generators
+Dummy data generators for api testing.
+All cors requests are allowed.
